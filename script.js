@@ -48,11 +48,15 @@ function chooseLove(type) {
   document.getElementById('continue3').style.display = 'inline-block';
 }
 
-const noButton = document.getElementById("noButton");
-if (noButton) {
-  noButton.addEventListener("mouseenter", moveNoButton);
-  noButton.addEventListener("click", moveNoButton);
-}
+const noButton1 = document.getElementById("noButton1");
+const noButton2 = document.getElementById("noButton2");
+
+[noButton1, noButton2].forEach(btn => {
+  if (btn) {
+    btn.addEventListener("mouseenter", moveNoButton);
+    btn.addEventListener("click", moveNoButton);
+  }
+});
 
 function moveNoButton() {
   const container = document.querySelector(".button-container");
