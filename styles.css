@@ -92,3 +92,13 @@ button:hover {
     opacity: 0;
   }
 }
+
+.button-container {
+  position: relative;
+  display: inline-block;
+}
+
+#noButton {
+  position: relative;
+  margin-left: 10px;
+}
