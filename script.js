@@ -51,25 +51,30 @@ function chooseLove(type) {
 const noButton1 = document.getElementById("noButton1");
 const noButton2 = document.getElementById("noButton2");
 
-[noButton1, noButton2].forEach(btn => {
-  if (btn) {
-    btn.addEventListener("mouseenter", moveNoButton);
-    btn.addEventListener("click", moveNoButton);
-  }
-});
+makeButtonRunAway(noButton1);
+makeButtonRunAway(noButton2);
+  
+function makeButtonRunAway(button) {
+  if (!button) return;
 
-function moveNoButton() {
-  const container = document.querySelector(".button-container");
+  const moveButton = (event) => {
+    const btn = event.target; // the button being hovered/clicked
+    const container = btn.parentElement;
 
-  const maxX = 200;
-  const maxY = 100;
+    // calculate maximum X/Y inside container
+    const maxX = container.offsetWidth - btn.offsetWidth;
+    const maxY = container.offsetHeight - btn.offsetHeight;
 
-  const randomX = Math.random() * maxX;
-  const randomY = Math.random() * maxY;
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
 
-  noButton.style.position = "absolute";
-  noButton.style.left = randomX + "px";
-  noButton.style.top = randomY + "px";
+    btn.style.position = "absolute";
+    btn.style.left = randomX + "px";
+    btn.style.top = randomY + "px";
+  };
+
+  button.addEventListener("mouseenter", moveButton);
+  button.addEventListener("click", moveButton);
 }
 
 function launchConfetti() {
